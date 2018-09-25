@@ -1,4 +1,4 @@
-# Spring Boot - Maven 3 - CentOS Docker image
+# Spring Boot - Maven 3 - RHEL Docker image
 
 [![Build Status](https://travis-ci.org/codecentric/springboot-maven3-centos.svg?branch=master)](https://travis-ci.org/codecentric/springboot-maven3-centos)
 

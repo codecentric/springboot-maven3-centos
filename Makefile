@@ -1,4 +1,4 @@
-IMAGE_NAME = codecentric/springboot-maven3-centos
+IMAGE_NAME = codecentric/springboot-maven3-rhel
 
 build:
 	docker build -t $(IMAGE_NAME) .

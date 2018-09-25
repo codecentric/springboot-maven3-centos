@@ -3,7 +3,7 @@
 # This image provide a base for running Spring Boot based applications. It
 # provides a base Java 8 installation and Maven 3.
 
-FROM registry.access.redhat.com/rhel
+FROM rhscl/s2i-base-rhel7:1
 
 EXPOSE 8080
 
@@ -30,7 +30,7 @@ ENV MAVEN_HOME /usr/share/maven
 # Add configuration files, bashrc and other tweaks
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 
-RUN chown -R 1001:0 ./
+RUN chown -R 1001:1001 ./
 USER 1001
 
 # Set the default CMD to print the usage of the language image

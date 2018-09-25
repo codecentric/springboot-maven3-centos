@@ -6,7 +6,7 @@ To use it, install STI: https://github.com/openshift/source-to-image
 
 Sample invocation:
 
-sti build git://github.com/codecentric/springboot-sample-app codecentric/springboot-maven3-centos springboot-sample-app
+sti build git://github.com/codecentric/springboot-sample-app codecentric/springboot-maven3-rhel springboot-sample-app
 
 
 You can then run the resulting image via:

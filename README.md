@@ -1,8 +1,8 @@
 # Spring Boot - Maven 3 - RHEL Docker image
 
-[![Build Status](https://travis-ci.org/codecentric/springboot-maven3-centos.svg?branch=master)](https://travis-ci.org/codecentric/springboot-maven3-centos)
+[![Build Status](https://travis-ci.org/codecentric/springboot-maven3-rhel.svg?branch=master)](https://travis-ci.org/codecentric/springboot-maven3-rhel)
 
-This repository contains the sources and [Dockerfile](https://github.com/codecentric/springboot-maven3-centos/blob/master/Dockerfile) of the base image for deploying Spring Boot applications as reproducible Docker images. The resulting images can be run either by [Docker](http://docker.io) or using [S2I](https://github.com/openshift/source-to-image).
+This repository contains the sources and [Dockerfile](https://github.com/codecentric/springboot-maven3-rhel/blob/master/Dockerfile) of the base image for deploying Spring Boot applications as reproducible Docker images. The resulting images can be run either by [Docker](http://docker.io) or using [S2I](https://github.com/openshift/source-to-image).
 
 This image is heavily inspired by the awesome [openshift/sti-ruby](https://github.com/openshift/sti-ruby/) builder images.
 
@@ -11,7 +11,7 @@ This image is heavily inspired by the awesome [openshift/sti-ruby](https://githu
 To build a simple springboot-sample-app application using standalone S2I and then run the resulting image with Docker execute:
 
 ```
-$ s2i build git://github.com/codecentric/springboot-sample-app codecentric/springboot-maven3-centos springboot-sample-app
+$ s2i build git://github.com/codecentric/springboot-sample-app codecentric/springboot-maven3-rhel springboot-sample-app
 $ docker run -p 8080:8080 springboot-sample-app
 ```
 
@@ -70,11 +70,11 @@ $ curl 127.0.0.1:8080
 In order to test your changes to this STI image or to the STI scripts, you can use the `test/run` script. Before that, you have to build the 'candidate' image:
 
 ```
-$ docker build -t codecentric/springboot-maven3-centos-candidate .
+$ docker build -t codecentric/springboot-maven3-rhel-candidate .
 ```
 
 After that you can execute `./test/run`. You can also use `make test` to automate this.
 
 ## Copyright
 
-Released under the Apache License 2.0. See the [LICENSE](https://github.com/codecentric/springboot-maven3-centos/blob/master/LICENSE) file.
+Released under the Apache License 2.0. See the [LICENSE](https://github.com/codecentric/springboot-maven3-rhel/blob/master/LICENSE) file.

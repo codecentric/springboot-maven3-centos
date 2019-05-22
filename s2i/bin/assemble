@@ -13,6 +13,7 @@ cp -Rf /tmp/src/. ./
 echo "---> Building Spring Boot application from source"
 echo "--> # MVN_ARGS = $MVN_ARGS"
 if [ -f "mvnw" ]; then
+  chmod +x ./mvnw
   ./mvnw clean install $MVN_ARGS
 else
   mvn clean install $MVN_ARGS

@@ -10,12 +10,26 @@ fi
 echo "---> Installing application source"
 cp -Rf /tmp/src/. ./
 
+
 echo "---> Building Spring Boot application from source"
 echo "--> # MVN_ARGS = $MVN_ARGS"
+
+
+if [ -f .s2i/bin/pre_build.sh ]; then
+    chmod +x .s2i/bin/pre_build.sh
+    sh .s2i/bin/pre_build.sh
+fi
+
 if [ -f "mvnw" ]; then
+  chmod +x ./mvnw
   ./mvnw clean install $MVN_ARGS
 else
   mvn clean install $MVN_ARGS
+fi
+
+if [ -f .s2i/bin/post_build.sh ]; then
+    chmod +x .s2i/bin/post_build.sh
+    sh .s2i/bin/post_build.sh
 fi
 
 # Fix source directory permissions

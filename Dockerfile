@@ -9,6 +9,12 @@ EXPOSE 8080
 
 ENV JAVA_VERSON 1.8.0
 ENV MAVEN_VERSION 3.3.9
+ENV JACOCO_VERSION 0.8.5
+# 模拟不开启测试模式
+ENV TEST_MODE 0
+ENV JACOCO_AGENT "/usr/share/jacoco/lib/jacocoagent.jar"
+ENV JACOCO_CLI "/usr/share/jacoco/lib/jacococli.jar"
+ENV JACOCO_SERVER "jacoco-server:5300"
 
 LABEL io.k8s.description="Platform for building and running Spring Boot applications" \
       io.k8s.display-name="Spring Boot Maven 3" \
@@ -22,7 +28,10 @@ RUN yum update -y && \
 
 RUN curl -fsSL https://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz | tar xzf - -C /usr/share \
   && mv /usr/share/apache-maven-$MAVEN_VERSION /usr/share/maven \
-  && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
+  && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn \ 
+  && curl -fsSL "http://search.maven.org/remotecontent?filepath=org/jacoco/jacoco/${JACOCO_VERSION}/jacoco-${JACOCO_VERSION}.zip" -o /tmp/jacoco-0.8.5.zip \
+  && unzip /tmp/jacoco-${JACOCO_VERSION}.zip -d /usr/share/jacoco \
+  && rm -rf /tmp/jacoco-${JACOCO_VERSION}.zip /usr/share/jacoco/doc
 
 ENV JAVA_HOME /usr/lib/jvm/java
 ENV MAVEN_HOME /usr/share/maven

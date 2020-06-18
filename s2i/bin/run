@@ -7,4 +7,14 @@ echo "---> Starting Spring Boot application"
 echo "--> # APP_TARGET = $APP_TARGET"
 echo "--> # JAVA_OPTS = $JAVA_OPTS"
 echo "---> Running application from standalone jar/war..."
+
+
+JACOCO_SERVER=${JACOCO_SERVER:-jacoco-server:5300}
+TEST_MODE=${TEST_MODE:-0}
+if [ "$TEST_MODE" == "1" ]; then
+JACOCO_SERVER_HOST=jacoco-server.devops.svc
+JACOCO_SERVER_PORT=5300
+java -javaagent:${JACOCO_AGENT}=output=tcpclient,sessionid=$JACOCO_SESSION_ID,address=$JACOCO_SERVER_HOST,port=$JACOCO_SERVER_PORT $JAVA_OPTS -jar `find $APP_TARGET -maxdepth 1 -regex ".*\(jar\|war\)"`
+else
 java $JAVA_OPTS -jar `find $APP_TARGET -maxdepth 1 -regex ".*\(jar\|war\)"`
+fi

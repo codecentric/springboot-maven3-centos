@@ -8,7 +8,7 @@ FROM openshift/base-centos7
 EXPOSE 8080
 
 ENV JAVA_VERSON 1.8.0
-ENV MAVEN_VERSION 3.3.9
+ENV MAVEN_VERSION 3.6.3
 
 LABEL io.k8s.description="Platform for building and running Spring Boot applications" \
       io.k8s.display-name="Spring Boot Maven 3" \
